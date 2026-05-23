@@ -15,9 +15,6 @@ service:
 ingress:
   enabled: false
 
-persistence:
-  enabled: false
-
 postgresql:
   enabled: false
 

@@ -9,13 +9,17 @@ GitOps-репозиторій для ArgoCD Application, який розгорт
 ├── application.yaml
 ├── namespaces/
 │   ├── application/
-│   │   ├── nginx.yaml
-│   │   └── ns.yaml
+│   │   ├── nginx.yaml   # reference manifest, not synced by current Application
+│   │   └── ns.yaml      # reference manifest, not synced by current Application
 │   └── infra-tools/
-│       └── ns.yaml
+│       └── ns.yaml      # reference manifest, not synced by current Application
 └── values/
     └── mlflow-values.yaml
 ```
+
+> `namespaces/` містить довідкові маніфести. Поточний `application.yaml` їх не деплоїть:
+> другий source використовує `ref: values` без `path`, тому маніфести звідти не синхронізуються.
+> Namespace `application` створюється автоматично через `syncPolicy.syncOptions: CreateNamespace=true`.
 
 ## ArgoCD Application
 
