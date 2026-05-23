@@ -1,6 +1,5 @@
 extraEnvVars:
-  - name: MLFLOW_ALLOWED_HOSTS
-    value: "*"
+  MLFLOW_ALLOWED_HOSTS: "*"
 
 backendStore:
   databaseMigration: false
