@@ -1,6 +1,9 @@
 extraEnvVars:
   MLFLOW_ALLOWED_HOSTS: "*"
 
+log:
+  enabled: false
+
 extraArgs:
   allowed-hosts: "*"
 
