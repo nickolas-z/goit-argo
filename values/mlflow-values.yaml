@@ -1,6 +1,9 @@
 extraEnvVars:
   MLFLOW_ALLOWED_HOSTS: "*"
 
+extraArgs:
+  allowed-hosts: "*"
+
 backendStore:
   databaseMigration: false
   databaseConnectionCheck: false
