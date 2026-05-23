@@ -9,24 +9,21 @@ GitOps-репозиторій для ArgoCD Application, який розгорт
 ├── application.yaml
 ├── namespaces/
 │   ├── application/
-│   │   ├── nginx.yaml   # reference manifest, not synced by current Application
-│   │   └── ns.yaml      # reference manifest, not synced by current Application
+│   │   ├── nginx.yaml   # Nginx Deployment + Service (синхронізується ArgoCD)
+│   │   └── ns.yaml      # Namespace application (синхронізується ArgoCD)
 │   └── infra-tools/
-│       └── ns.yaml      # reference manifest, not synced by current Application
+│       └── ns.yaml      # Namespace infra-tools (керується Terraform, не ArgoCD)
 └── values/
     └── mlflow-values.yaml
 ```
 
-> `namespaces/` містить довідкові маніфести. Поточний `application.yaml` їх не деплоїть:
-> другий source використовує `ref: values` без `path`, тому маніфести звідти не синхронізуються.
-> Namespace `application` створюється автоматично через `syncPolicy.syncOptions: CreateNamespace=true`.
-
 ## ArgoCD Application
 
-`application.yaml` використовує ArgoCD multiple sources:
+`application.yaml` використовує ArgoCD multiple sources (три sources):
 
 - Helm chart: `mlflow` з Helm repo `https://community-charts.github.io/helm-charts`
-- Values: `values/mlflow-values.yaml` з цього репозиторію через `$values`
+- Values ref: `values/mlflow-values.yaml` з цього репозиторію через `$values`
+- Manifests: `namespaces/application/` з цього репозиторію (Namespace + Nginx)
 
 Застосувати Application після встановлення ArgoCD:
 

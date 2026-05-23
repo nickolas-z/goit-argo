@@ -18,6 +18,9 @@ spec:
     - repoURL: https://github.com/nickolas-z/goit-argo.git
       targetRevision: main
       ref: values
+    - repoURL: https://github.com/nickolas-z/goit-argo.git
+      targetRevision: main
+      path: namespaces/application
   destination:
     server: https://kubernetes.default.svc
     namespace: application
