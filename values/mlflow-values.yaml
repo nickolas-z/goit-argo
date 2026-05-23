@@ -1,0 +1,32 @@
+backendStore:
+  databaseMigration: false
+  databaseConnectionCheck: false
+  defaultSqlitePath: /tmp/mlflow.db
+
+artifactRoot:
+  defaultArtifactRoot: ./mlruns
+  defaultArtifactsDestination: ./mlartifacts
+  proxiedArtifactStorage: false
+
+service:
+  type: ClusterIP
+  port: 5000
+
+ingress:
+  enabled: false
+
+persistence:
+  enabled: false
+
+postgresql:
+  enabled: false
+
+mysql:
+  enabled: false
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 256Mi
+  limits:
+    memory: 512Mi
